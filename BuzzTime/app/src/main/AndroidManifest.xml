@@ -40,6 +40,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jjwhite.joshua.buzztime.ModeSelect" />
         </activity>
+        <activity
+            android:name=".PlayerPicker"
+            android:label="@string/title_activity_player_picker"
+            android:parentActivityName=".ModeSelect" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jjwhite.joshua.buzztime.ModeSelect" />
+        </activity>
     </application>
 
 </manifest>

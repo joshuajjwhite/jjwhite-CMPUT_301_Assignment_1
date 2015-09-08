@@ -10,4 +10,5 @@
     <string name="title_activity_reaction_test">ReactionTest</string>
     <string name="title_activity_play_with_friends">PlayWithFriends</string>
     <string name="title_activity_records">Records</string>
+    <string name="title_activity_player_picker">PlayerPicker</string>
 </resources>
