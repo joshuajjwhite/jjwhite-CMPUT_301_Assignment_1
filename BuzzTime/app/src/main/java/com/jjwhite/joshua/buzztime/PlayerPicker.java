@@ -4,13 +4,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.NumberPicker;
 
 public class PlayerPicker extends AppCompatActivity {
+
+    //Declare Variables
+    NumberPicker numPick = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_picker);
+
+        //Number Picker setup
+        numPick = (NumberPicker)findViewById(R.id.playerpicker);
+        numPick.setMaxValue(4);
+        numPick.setMinValue(2);
+        numPick.setWrapSelectorWheel(true);
     }
 
     @Override
@@ -34,4 +44,5 @@ public class PlayerPicker extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    
 }
