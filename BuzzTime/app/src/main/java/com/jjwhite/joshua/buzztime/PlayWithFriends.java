@@ -14,6 +14,8 @@ import android.widget.TextView;
 public class PlayWithFriends extends AppCompatActivity {
 
     int numOfPlayers;
+    AlertDialog.Builder alert = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +23,9 @@ public class PlayWithFriends extends AppCompatActivity {
 
         Intent intent = getIntent();
         int numOfPlayers = intent.getIntExtra("com.jjwhite.joshua.NUM_PLAYERS",2);
-       // TextView textView = new TextView(this);
-        //textView.setTextSize(40);
-        //textView.setText(Integer.toString(numOfPlayers));
-        //setContentView(textView);
+
         setContentView(R.layout.activity_play_with_friends);
-        formatPlayerButons(numOfPlayers);
+        formatPlayerButtons(numOfPlayers);
     }
 
     @Override
@@ -52,7 +51,7 @@ public class PlayWithFriends extends AppCompatActivity {
     }
 
 
-    public void formatPlayerButons(int numOfPlayers){
+    public void formatPlayerButtons(int numOfPlayers){
         Button button3 = (Button)findViewById(R.id.button_player_3);
         Button button4 = (Button)findViewById(R.id.button_player_4);
 
@@ -63,6 +62,34 @@ public class PlayWithFriends extends AppCompatActivity {
         if(numOfPlayers == 3){
             button4.setVisibility(View.GONE);
         }
+    }
+
+    public void buzzIn(View view) throws InterruptedException {
+        String playerNum = getResources().getResourceEntryName(view.getId()).substring(14);
+        //delay to avoid a late player from dismissing the alert
+        Thread.sleep(500,0);
+        alertPlayer(playerNum);
+
+        //TextView textView = new TextView(this);
+        //textView.setTextSize(40);
+        //textView.setText(playerNum);
+        //setContentView(textView);
+
+    }
+
+    public void alertPlayer(String playernum){
+        alert = new AlertDialog.Builder(PlayWithFriends.this);
+        alert.setTitle("Buzzed In");
+        alert.setMessage("Player " + playernum + " Buzzed In First!");
+        alert.setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        alert.create();
+        alert.show();
     }
 
 }

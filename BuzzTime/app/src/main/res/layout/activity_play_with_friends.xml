@@ -15,7 +15,7 @@
         android:textSize="7mm"
         android:background= "#ffb2b2"
         android:layout_margin="1mm"
-        />
+        android:onClick="buzzIn"/>
 
     <Button
         android:layout_width="match_parent"
@@ -26,7 +26,8 @@
         android:layout_weight="1"
         android:textSize="7mm"
         android:background= "#009a00"
-        android:layout_margin="1mm"/>
+        android:layout_margin="1mm"
+        android:onClick="buzzIn"/>
 
     <Button
         android:layout_width="match_parent"
@@ -37,7 +38,8 @@
         android:layout_weight="1"
         android:textSize="7mm"
         android:background= "#9999ff"
-        android:layout_margin="1mm"/>
+        android:layout_margin="1mm"
+        android:onClick="buzzIn"/>
 
     <Button
         android:layout_width="match_parent"
@@ -48,5 +50,6 @@
         android:layout_weight="1"
         android:textSize="7mm"
         android:background= "#ffffff00"
-        android:layout_margin="1mm"/>
+        android:layout_margin="1mm"
+        android:onClick="buzzIn"/>
 </LinearLayout>
