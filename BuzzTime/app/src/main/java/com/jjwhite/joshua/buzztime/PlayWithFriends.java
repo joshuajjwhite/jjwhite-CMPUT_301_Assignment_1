@@ -19,11 +19,11 @@ public class PlayWithFriends extends AppCompatActivity {
 
         Intent intent = getIntent();
         int numOfPlayers = intent.getIntExtra("com.jjwhite.joshua.NUM_PLAYERS",2);
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(Integer.toString(numOfPlayers));
-        setContentView(textView);
-
+       // TextView textView = new TextView(this);
+        //textView.setTextSize(40);
+        //textView.setText(Integer.toString(numOfPlayers));
+        //setContentView(textView);
+        setContentView(R.layout.activity_play_with_friends);
     }
 
     @Override
