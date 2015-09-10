@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class PlayWithFriends extends AppCompatActivity {
@@ -24,6 +26,7 @@ public class PlayWithFriends extends AppCompatActivity {
         //textView.setText(Integer.toString(numOfPlayers));
         //setContentView(textView);
         setContentView(R.layout.activity_play_with_friends);
+        formatPlayerButons(numOfPlayers);
     }
 
     @Override
@@ -49,10 +52,17 @@ public class PlayWithFriends extends AppCompatActivity {
     }
 
 
-    public void printPlayers(int i){
-    //setContentView(R.layout.activity_play_with_friends);
-    TextView textView = new TextView(this);
-    textView.setTextSize(40);
-    textView.setText(i);
-    setContentView(textView);}
+    public void formatPlayerButons(int numOfPlayers){
+        Button button3 = (Button)findViewById(R.id.button_player_3);
+        Button button4 = (Button)findViewById(R.id.button_player_4);
+
+        if(numOfPlayers == 2){
+            button3.setVisibility(View.GONE);
+            button4.setVisibility(View.GONE);
+        }
+        if(numOfPlayers == 3){
+            button4.setVisibility(View.GONE);
+        }
+    }
+
 }
