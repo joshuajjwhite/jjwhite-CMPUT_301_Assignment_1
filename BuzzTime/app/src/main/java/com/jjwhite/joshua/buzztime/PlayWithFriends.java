@@ -2,6 +2,7 @@ package com.jjwhite.joshua.buzztime;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +16,13 @@ public class PlayWithFriends extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        int numOfPlayers = intent.getIntExtra("com.jjwhite.joshua.NUM_PLAYERS",2);
+        TextView textView = new TextView(this);
+        textView.setTextSize(40);
+        textView.setText(Integer.toString(numOfPlayers));
+        setContentView(textView);
 
     }
 

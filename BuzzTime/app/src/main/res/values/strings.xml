@@ -12,4 +12,5 @@
     <string name="title_activity_records">Records</string>
     <string name="title_activity_player_picker">PlayerPicker</string>
     <string name="players_amount">How many Players are playing?</string>
+    <string name="button_confirm">Confirm</string>
 </resources>

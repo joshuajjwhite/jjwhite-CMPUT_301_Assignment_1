@@ -1,12 +1,17 @@
 package com.jjwhite.joshua.buzztime;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 
 public class PlayerPicker extends AppCompatActivity {
+
 
     //Declare Variables
     NumberPicker numPick = null;
@@ -17,7 +22,7 @@ public class PlayerPicker extends AppCompatActivity {
         setContentView(R.layout.activity_player_picker);
 
         //Number Picker setup
-        numPick = (NumberPicker)findViewById(R.id.playerpicker);
+        numPick = (NumberPicker) findViewById(R.id.player_picker);
         numPick.setMaxValue(4);
         numPick.setMinValue(2);
         numPick.setWrapSelectorWheel(true);
@@ -44,5 +49,16 @@ public class PlayerPicker extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    
+
+
+    // Called when the user clicks the player_picker_button to confirm player amount
+    public void confirmPlayers(View view) {
+        Intent intent = new Intent(this, PlayWithFriends.class);
+        NumberPicker numPick = (NumberPicker) findViewById(R.id.player_picker);
+        int num_players = numPick.getValue();
+        intent.putExtra("com.jjwhite.joshua.NUM_PLAYERS", num_players);
+                startActivity(intent);
+
+    }
+
 }
