@@ -48,6 +48,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.jjwhite.joshua.buzztime.ModeSelect" />
         </activity>
+        <activity
+            android:name=".MultiuplayerRecords"
+            android:label="@string/title_activity_multiuplayer_records"
+            android:parentActivityName=".ModeSelect" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.jjwhite.joshua.buzztime.ModeSelect" />
+        </activity>
     </application>
 
 </manifest>

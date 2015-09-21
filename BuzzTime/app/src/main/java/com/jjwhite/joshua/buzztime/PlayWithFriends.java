@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class PlayWithFriends extends AppCompatActivity {
 
-    int numOfPlayers;
+    RecordDealer multiplayer_records;
     AlertDialog.Builder alert = null;
 
 
@@ -21,8 +21,8 @@ public class PlayWithFriends extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = getIntent();
-        int numOfPlayers = intent.getIntExtra("com.jjwhite.joshua.NUM_PLAYERS",2);
+
+        int numOfPlayers = getNumOfPlayers();
 
         setContentView(R.layout.activity_play_with_friends);
         formatPlayerButtons(numOfPlayers);
@@ -66,12 +66,14 @@ public class PlayWithFriends extends AppCompatActivity {
 
     public void buzzIn(View view) throws InterruptedException {
         String playerNum = getResources().getResourceEntryName(view.getId()).substring(14);
+        multiplayer_records = new RecordDealer();
+        multiplayer_records.incrimentStats(this, playerNum, getNumOfPlayers());
         //delay to avoid a late player from dismissing the alert
         Thread.sleep(500,0);
         alertPlayer(playerNum);
-
         //TextView textView = new TextView(this);
         //textView.setTextSize(40);
+
         //textView.setText(playerNum);
         //setContentView(textView);
 
@@ -80,7 +82,8 @@ public class PlayWithFriends extends AppCompatActivity {
     public void alertPlayer(String playernum){
         alert = new AlertDialog.Builder(PlayWithFriends.this);
         alert.setTitle("Buzzed In");
-        alert.setMessage("Player " + playernum + " Buzzed In First!");
+        String temp = Integer.toString(multiplayer_records.loadStats(this, playernum, Integer.toString(getNumOfPlayers())));
+        alert.setMessage("Player " + playernum + " Buzzed In First! " + "(" + temp + ")" );
         alert.setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -91,5 +94,11 @@ public class PlayWithFriends extends AppCompatActivity {
         alert.create();
         alert.show();
     }
+
+    public int getNumOfPlayers(){
+        Intent intent = getIntent();
+        return intent.getIntExtra("com.jjwhite.joshua.NUM_PLAYERS", 2);
+    }
+
 
 }

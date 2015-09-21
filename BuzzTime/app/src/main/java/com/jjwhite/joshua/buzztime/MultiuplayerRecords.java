@@ -5,18 +5,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Records extends AppCompatActivity {
+public class MultiuplayerRecords extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_records);
+        setContentView(R.layout.activity_multiuplayer_records);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_records, menu);
+        getMenuInflater().inflate(R.menu.menu_multiuplayer_records, menu);
         return true;
     }
 
