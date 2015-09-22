@@ -23,7 +23,8 @@
         android:text="Clear"
         android:id="@+id/multi_clear"
         android:gravity="center"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:onClick="clearMyMultiStats"/>
 
     </LinearLayout>
 

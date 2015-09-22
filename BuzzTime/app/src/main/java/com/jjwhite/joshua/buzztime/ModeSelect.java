@@ -52,11 +52,11 @@ public class ModeSelect extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void records(View view) {
-        // Triggered when the user selects "Records" from the menu
+    public void singlePlayerRecords(View view) {
+         //Triggered when the user selects "Records" from the menu
         // Will trigger page that displays records
-       // Intent intent = new Intent(this, Records.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, MultiuplayerRecords.class);
+        startActivity(intent);
     }
 
 }

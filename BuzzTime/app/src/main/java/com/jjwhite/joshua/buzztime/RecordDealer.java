@@ -55,9 +55,29 @@ public class RecordDealer {
 
     public void clearMultiplayerRecords(Context context){
         for(int i = 2; i <= 4; i++){
+        /*    if(i == 2){
+                saveStats(context,"1",0,"2");
+                saveStats(context, "2", 0, "2");
+            }
+            else if(i == 3){
+                saveStats(context, "1", 0, "3");
+                saveStats(context,"2",0,"3");
+                saveStats(context,"3",0,"3");
+            }
+
+            else{
+                saveStats(context, "1", 0, "4");
+                saveStats(context,"2",0,"4");
+                saveStats(context,"3",0,"4");
+                saveStats(context,"4",0,"4");
+            } */
+
             SharedPreferences game_stats = context.getSharedPreferences(Integer.toString(i), Context.MODE_PRIVATE);
-            SharedPreferences.Editor edit = game_stats.edit();
-            edit.clear();
+            SharedPreferences.Editor edit_stats = game_stats.edit();
+            edit_stats.clear();
+            edit_stats.apply();
+
+
         }
     }
 }

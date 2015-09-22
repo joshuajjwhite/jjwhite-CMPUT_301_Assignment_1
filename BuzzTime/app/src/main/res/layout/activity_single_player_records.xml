@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Clear"
-            android:id="@+id/multi_clear"
+            android:id="@+id/single_clear"
             android:gravity="center"
             android:layout_weight="1" />
 
@@ -38,7 +38,7 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Single Player Records"
-        android:id="@+id/multi_title"
+        android:id="@+id/single_title"
         android:textSize="38dp"
         />
 
@@ -46,11 +46,12 @@
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="366dp" android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_height="366dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin"
-        tools:context="com.jjwhite.joshua.buzztime.MultiuplayerRecords"
+        tools:context="com.jjwhite.joshua.buzztime.singleuplayerRecords"
         >
 
 
@@ -68,7 +69,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Metrics"
-                android:id="@+id/multi_table_head_1"
+                android:id="@+id/single_table_head_1"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -78,7 +79,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Last 10"
-                android:id="@+id/multi_table_head_2"
+                android:id="@+id/single_table_head_2"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -88,7 +89,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Last 100"
-                android:id="@+id/multi_table_head_3"
+                android:id="@+id/single_table_head_3"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -98,7 +99,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="All"
-                android:id="@+id/multi_table_head_4"
+                android:id="@+id/single_table_head_4"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -116,7 +117,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Mean"
-                android:id="@+id/multi_2_1"
+                android:id="@+id/single_2_1"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -126,7 +127,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Pl1 Clicks"
-                android:id="@+id/multi_2_2"
+                android:id="@+id/single_2_2"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -136,7 +137,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Pl2 Clicks"
-                android:id="@+id/multi_2_3"
+                android:id="@+id/single_2_3"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -146,7 +147,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="N/A"
-                android:id="@+id/multi_2_4"
+                android:id="@+id/single_2_4"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -165,7 +166,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Median"
-                android:id="@+id/multi_3_1"
+                android:id="@+id/single_3_1"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -175,7 +176,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Pl1 Clicks"
-                android:id="@+id/multi_3_2"
+                android:id="@+id/single_3_2"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -185,7 +186,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Pl2 Clicks"
-                android:id="@+id/multi_3_3"
+                android:id="@+id/single_3_3"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
@@ -195,7 +196,7 @@
                 android:gravity="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Pl3 Clicks"
-                android:id="@+id/multi_3_4"
+                android:id="@+id/single_3_4"
                 android:textSize="15dp"
                 android:layout_weight="1"/>
 
