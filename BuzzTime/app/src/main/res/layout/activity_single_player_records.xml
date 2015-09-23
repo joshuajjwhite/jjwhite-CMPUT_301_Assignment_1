@@ -25,7 +25,7 @@
             android:text="Multi Player Records"
             android:id="@+id/single_back_button"
             android:layout_weight="1"
-
+            android:onClick="MultiplayerRecords"
             />
 
 
@@ -39,7 +39,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Single Player Records"
         android:id="@+id/single_title"
-        android:textSize="38dp"
+        android:textSize="35dp"
         />
 
 

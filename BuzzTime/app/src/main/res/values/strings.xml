@@ -9,9 +9,9 @@
     <string name="welcome">Welcome to Buzz Time!  Please select a menu item</string>
     <string name="title_activity_reaction_test">ReactionTest</string>
     <string name="title_activity_play_with_friends">PlayWithFriends</string>
-    <string name="title_activity_records">Records</string>
+    <string name="title_activity_single_player_records">Records</string>
     <string name="title_activity_player_picker">PlayerPicker</string>
     <string name="players_amount">How many Players are playing?</string>
     <string name="button_confirm">Confirm</string>
-    <string name="title_activity_multiuplayer_records">MultiuplayerRecords</string>
+    <string name="title_activity_multiplayer_records">MultiuplayerRecords</string>
 </resources>

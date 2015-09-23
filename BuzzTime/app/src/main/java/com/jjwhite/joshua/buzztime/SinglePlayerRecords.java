@@ -1,9 +1,11 @@
 package com.jjwhite.joshua.buzztime;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class SinglePlayerRecords extends AppCompatActivity {
 
@@ -38,6 +40,13 @@ public class SinglePlayerRecords extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void MultiplayerRecords(View view) {
+        //Triggered when the user selects "Records" from the menu
+        // Will trigger page that displays records
+        Intent intent = new Intent(this, MultiplayerRecords.class);
+        startActivity(intent);
+
+    }
 
 }
 

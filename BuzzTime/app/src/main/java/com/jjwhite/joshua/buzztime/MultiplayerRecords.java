@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class MultiuplayerRecords extends AppCompatActivity {
+public class MultiplayerRecords extends AppCompatActivity {
 
     private TextView two_one;
     private TextView two_two;
@@ -22,7 +22,7 @@ public class MultiuplayerRecords extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_multiuplayer_records);
+        setContentView(R.layout.activity_multiplayer_records);
         two_one = (TextView) findViewById(R.id.multi_2_2);
         two_two = (TextView) findViewById(R.id.multi_2_3);
         three_one = (TextView) findViewById(R.id.multi_3_2);

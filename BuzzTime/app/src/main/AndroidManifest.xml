@@ -33,8 +33,8 @@
                 android:value="com.jjwhite.joshua.buzztime.ModeSelect" />
         </activity>
         <activity
-            android:name=".Records"
-            android:label="@string/title_activity_records"
+            android:name=".SinglePlayerRecords"
+            android:label="@string/title_activity_single_player_records"
             android:parentActivityName=".ModeSelect" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -49,8 +49,8 @@
                 android:value="com.jjwhite.joshua.buzztime.ModeSelect" />
         </activity>
         <activity
-            android:name=".MultiuplayerRecords"
-            android:label="@string/title_activity_multiuplayer_records"
+            android:name=".MultiplayerRecords"
+            android:label="@string/title_activity_multiplayer_records"
             android:parentActivityName=".ModeSelect" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
