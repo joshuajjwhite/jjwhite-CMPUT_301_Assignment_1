@@ -3,6 +3,7 @@ package com.jjwhite.joshua.buzztime;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +16,8 @@ public class PlayWithFriends extends AppCompatActivity {
 
     RecordDealer multiplayer_records;
     AlertDialog.Builder alert = null;
+    private long lastClickTime;
+
 
 
     @Override
@@ -26,6 +29,8 @@ public class PlayWithFriends extends AppCompatActivity {
 
         setContentView(R.layout.activity_play_with_friends);
         formatPlayerButtons(numOfPlayers);
+
+        lastClickTime = 0;
     }
 
     @Override
@@ -65,19 +70,19 @@ public class PlayWithFriends extends AppCompatActivity {
     }
 
     public void buzzIn(View view) throws InterruptedException {
-        String playerNum = getResources().getResourceEntryName(view.getId()).substring(14);
-        multiplayer_records = new RecordDealer();
-        multiplayer_records.incrimentStats(this, playerNum, getNumOfPlayers());
-        //delay to avoid a late player from dismissing the alert
-        Thread.sleep(500,0);
-        alertPlayer(playerNum);
-        //TextView textView = new TextView(this);
-        //textView.setTextSize(40);
 
-        //textView.setText(playerNum);
-        //setContentView(textView);
+            if(!(SystemClock.elapsedRealtime() - lastClickTime < 1500)){
 
+               lastClickTime = SystemClock.elapsedRealtime();
+
+                String playerNum = getResources().getResourceEntryName(view.getId()).substring(14);
+                multiplayer_records = new RecordDealer();
+                multiplayer_records.incrimentStats(this, playerNum, getNumOfPlayers());
+                //delay to avoid a late player from dismissing the alert
+                alertPlayer(playerNum);
+                Thread.sleep(500, 0);
     }
+   }
 
     public void alertPlayer(String playernum){
         alert = new AlertDialog.Builder(PlayWithFriends.this);

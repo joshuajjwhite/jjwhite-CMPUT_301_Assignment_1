@@ -1,5 +1,7 @@
 package com.jjwhite.joshua.buzztime;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,18 +17,17 @@ public class ReactionTest extends AppCompatActivity {
 
     LinearLayout single_player;
     Button single_player_button;
+    AlertDialog.Builder alert = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        single_player_button = (Button) findViewById(R.id.single_player_button);
         setContentView(R.layout.activity_reaction_test);
+        alert();
 
-       // single_player_button.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-         //   public void onClick(View v) {
 
-           // }
-       // });
+
     }
 
     @Override
@@ -57,6 +58,30 @@ public class ReactionTest extends AppCompatActivity {
         Date date = new Date();
         long time = date.getTime();
         return time;
+
+    }
+
+    public void alert(){
+        alert = new AlertDialog.Builder(ReactionTest.this);
+        alert.setTitle("Time to test your reaction time");
+        alert.setMessage("A message to click the button will randomly appear.  Click the button as soon as you are propmted");
+        alert.setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+              //  testGame();
+            }
+        });
+
+        alert.create();
+        alert.show();
+    }
+
+    public void testGame() throws InterruptedException{
+
+        Random rand = new Random();
+        wait((Double.doubleToLongBits(rand.nextDouble()) * 2010) - 10 );
+
 
     }
 }
