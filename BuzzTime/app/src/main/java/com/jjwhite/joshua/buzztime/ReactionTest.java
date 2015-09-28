@@ -2,13 +2,17 @@ package com.jjwhite.joshua.buzztime;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Message;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.os.Handler;
 
 import java.util.Date;
 import java.util.Random;
@@ -18,17 +22,70 @@ public class ReactionTest extends AppCompatActivity {
     LinearLayout single_player;
     Button single_player_button;
     AlertDialog.Builder alert = null;
+    private Handler gamehandle;
+    int TOOEARLY;
+    int CALCLATENCY;
+    int PLAYGAME;
+    Message msg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        single_player_button = (Button) findViewById(R.id.single_player_button);
         setContentView(R.layout.activity_reaction_test);
-        alert();
+        single_player_button = (Button) findViewById(R.id.single_player_button);
+
+        TOOEARLY = 1;
+        CALCLATENCY = 2;
+        PLAYGAME = 3;
+        rand = new Random();
+
+        single_player_button.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                if ((SystemClock.elapsedRealtime() - lastTime < randomdelay)) {
+                    Message msg = new Message();
+                    msg.what = TOOEARLY;
+                    gamehandle.sendMessage(msg);
+                }
+                else {
+
+                    Message msg = new Message();
+                    msg.what = CALCLATENCY;
+                    gamehandle.sendMessage(msg);
+                }
+            }
+        });
 
 
+         gamehandle = new Handler(){
 
+             public void handleMessage(Message msg) {
+                 if(msg.what == TOOEARLY) {
+
+                     single_player_button.setText("TOO EARLY");
+                     testGame();
+                 }
+                 else if(msg.what == CALCLATENCY) {
+                     double latency = calcLatency(lastTime,randomdelay);
+                     single_player_button.setText(Double.toString(latency));
+                     testGame();
+                 }
+                 else if(msg.what == PLAYGAME) {
+                     single_player_button.setText("CLICK!");
+                 }
+             }
+         };
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        alert();
+        testGame();}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,14 +109,7 @@ public class ReactionTest extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public long latencyOnClick() throws InterruptedException {
-        Random rand = new Random();
-        wait((Double.doubleToLongBits(rand.nextDouble()) * 2010) - 10 );
-        Date date = new Date();
-        long time = date.getTime();
-        return time;
 
-    }
 
     public void alert(){
         alert = new AlertDialog.Builder(ReactionTest.this);
@@ -69,7 +119,7 @@ public class ReactionTest extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-              //  testGame();
+
             }
         });
 
@@ -77,11 +127,19 @@ public class ReactionTest extends AppCompatActivity {
         alert.show();
     }
 
-    public void testGame() throws InterruptedException{
+   public void testGame() {
 
-        Random rand = new Random();
-        wait((Double.doubleToLongBits(rand.nextDouble()) * 2010) - 10 );
+       msg = new Message();
+       msg.what = PLAYGAME;
+       lastTime = SystemClock.elapsedRealtime();
+       gamehandle.sendMessageDelayed(msg, randomdelay.longValue());
 
 
-    }
+
+
+   }
+
+
 }
+
+
