@@ -10,15 +10,16 @@ import java.util.Random;
 public class GamePlay {
 
     private String gamestate;
-    private double lasttime;
-    private double randomdelay;
+    private Double lasttime;
+    private Double randomdelay;
     private Random rand;
 
     public GamePlay(){
 
-        this.gamestate = "Wait";
-        this.randomdelay = (rand.nextDouble() * 2510.0d) - 10.0d;
-        this.lasttime = 0d;
+        this.gamestate = "WAIT";
+        rand = new Random();
+        nextRand();
+        setLasttime();
     }
 
     public String getGamestate() {
@@ -29,23 +30,34 @@ public class GamePlay {
         this.gamestate = gamestate;
     }
 
-    public double getLasttime() {
-        return lasttime;
+    public Double getLasttime() {
+        return this.lasttime;
     }
 
-    public void setLasttime(double lasttime) {
-        this.lasttime = lasttime;
+    public void setLasttime() {
+        this.lasttime= new Double((SystemClock.elapsedRealtime()));
     }
 
-    public double getRandomdelay() {
-        return randomdelay;
+    public Double getRandomdelay() {return this.randomdelay;
     }
 
     public void setRandomdelay(double randomdelay) {
         this.randomdelay = randomdelay;
     }
 
-    public double calcLatency(double lasttime, double randomdelay){
-        return SystemClock.elapsedRealtime() - this.getLasttime() - this.getLasttime();
+    public Double calcLatency(){
+        return (SystemClock.elapsedRealtime() - this.getLasttime())/1000;
+    }
+
+    public void nextRand(){
+        setRandomdelay((this.rand.nextDouble() * 2510.0d) - 10.0d);
+    }
+
+    public boolean tooEarly(){
+        if((this.getGamestate().equals("CLICK!"))){ return false;}
+
+
+        else {return true;}
+
     }
 }

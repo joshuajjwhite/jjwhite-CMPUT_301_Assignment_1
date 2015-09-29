@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Message;
 import android.os.SystemClock;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,43 +20,39 @@ import java.util.Random;
 
 public class ReactionTest extends AppCompatActivity {
 
-    LinearLayout single_player;
-    Button single_player_button;
-    AlertDialog.Builder alert = null;
+    private LinearLayout single_player;
+    private Button single_player_button;
+    private AlertDialog.Builder alert = null;
     private Handler gamehandle;
-    int TOOEARLY;
-    int CALCLATENCY;
-    int PLAYGAME;
-    Message msg;
+    private Message msg;
+    private DataManager datamanager;
+    private int START;
+    private int PLAYGAME;
+    private int POSTCLICK;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reaction_test);
+        msg = new Message();
+        START = 1;
+        PLAYGAME = 2;
+        POSTCLICK = 3;
+
         single_player_button = (Button) findViewById(R.id.single_player_button);
 
-        TOOEARLY = 1;
-        CALCLATENCY = 2;
-        PLAYGAME = 3;
-        rand = new Random();
+        datamanager = DataManager.getInstance(this);
+
 
         single_player_button.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                if ((SystemClock.elapsedRealtime() - lastTime < randomdelay)) {
-                    Message msg = new Message();
-                    msg.what = TOOEARLY;
-                    gamehandle.sendMessage(msg);
-                }
-                else {
-
-                    Message msg = new Message();
-                    msg.what = CALCLATENCY;
-                    gamehandle.sendMessage(msg);
-                }
+                msg = new Message();
+                msg.what = POSTCLICK;
+                gamehandle.sendMessage(msg);
             }
         });
 
@@ -63,18 +60,30 @@ public class ReactionTest extends AppCompatActivity {
          gamehandle = new Handler(){
 
              public void handleMessage(Message msg) {
-                 if(msg.what == TOOEARLY) {
+                 if(msg.what == START) {
+                     datamanager.changeState("START");
+                     datamanager.gamePrep();
+                     gameStart();
 
-                     single_player_button.setText("TOO EARLY");
-                     testGame();
-                 }
-                 else if(msg.what == CALCLATENCY) {
-                     double latency = calcLatency(lastTime,randomdelay);
-                     single_player_button.setText(Double.toString(latency));
-                     testGame();
                  }
                  else if(msg.what == PLAYGAME) {
-                     single_player_button.setText("CLICK!");
+                     String readystate = datamanager.readyTest();
+                     if(readystate.equals("CLICK!")){
+                        single_player_button.setText(readystate);}
+                     else{single_player_button.setText("");
+                         msg = new Message();
+                         msg.what = START;
+                         gamehandle.sendMessage(msg);}
+                 }
+
+                 else if(msg.what == POSTCLICK){
+                     gamehandle.removeMessages(PLAYGAME);
+                     single_player_button.setText(datamanager.handleClick());
+                     datamanager.changeState("WAIT");
+                     msg = new Message();
+                     msg.what = START;
+                     gamehandle.sendMessage(msg);
+
                  }
              }
          };
@@ -85,7 +94,7 @@ public class ReactionTest extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         alert();
-        testGame();}
+        }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -119,20 +128,24 @@ public class ReactionTest extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-
+                afterDismiss();
             }
         });
 
         alert.create();
         alert.show();
+
     }
 
-   public void testGame() {
+    public void afterDismiss(){
+    msg.what = START;
+    gamehandle.sendMessage(msg);}
+
+   public void gameStart() {
 
        msg = new Message();
        msg.what = PLAYGAME;
-       lastTime = SystemClock.elapsedRealtime();
-       gamehandle.sendMessageDelayed(msg, randomdelay.longValue());
+       gamehandle.sendMessageDelayed(msg, datamanager.getRandomDelay());
 
 
 
