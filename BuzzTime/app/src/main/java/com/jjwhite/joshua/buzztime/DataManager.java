@@ -4,17 +4,22 @@ package com.jjwhite.joshua.buzztime;
 import android.content.Context;
 import android.os.SystemClock;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**
  * Created by Joshua on 2015-09-28.
  */
 public class DataManager {
 
+    RecordDealer records;
     private GamePlay game;
     private DataManager datamanager;
     private Context context;
     private static DataManager instance;
 
     private DataManager(Context context) {
+        records = new RecordDealer();
         this.context = context;
         game = new GamePlay();
     }
@@ -60,7 +65,25 @@ public class DataManager {
         }
 
         else {
-            return Double.toString(game.calcLatency()) + " S";}
+            Double temp = game.calcLatency();
+            this.addRecord(temp);
+            return Double.toString(temp);}
 
+    }
+
+    public RecordDealer getRecords() {
+        return records;
+    }
+
+    public void setRecords(RecordDealer records) {
+        this.records = records;
+    }
+
+    public void setRecordsAL(ArrayList<Double> al){
+        this.getRecords().setClick_tracker(al);
+    }
+
+    public void addRecord(Double record){
+        this.getRecords().getClick_tracker().add(0,record);
     }
 }

@@ -65,20 +65,20 @@ public class MultiplayerRecords extends AppCompatActivity {
         RecordDealer recorddeal = new RecordDealer();
         for(int i = 2; i <= 4; i ++){
             if(i == 2){
-                two_one.setText(Integer.toString(recorddeal.loadStats(this, "1", Integer.toString(i))));
-                two_two.setText(Integer.toString(recorddeal.loadStats(this,"2", Integer.toString(i))));
+                two_one.setText(Integer.toString(recorddeal.loadMultiStats(this, "1", Integer.toString(i))));
+                two_two.setText(Integer.toString(recorddeal.loadMultiStats(this,"2", Integer.toString(i))));
             }
             else if(i == 3){
-                three_one.setText(Integer.toString(recorddeal.loadStats(this,"1", Integer.toString(i))));
-                three_two.setText(Integer.toString(recorddeal.loadStats(this,"2", Integer.toString(i))));
-                three_three.setText(Integer.toString(recorddeal.loadStats(this,"3", Integer.toString(i))));
+                three_one.setText(Integer.toString(recorddeal.loadMultiStats(this,"1", Integer.toString(i))));
+                three_two.setText(Integer.toString(recorddeal.loadMultiStats(this,"2", Integer.toString(i))));
+                three_three.setText(Integer.toString(recorddeal.loadMultiStats(this,"3", Integer.toString(i))));
             }
 
             else{
-                four_one.setText(Integer.toString(recorddeal.loadStats(this,"1", Integer.toString(i))));
-                four_two.setText(Integer.toString(recorddeal.loadStats(this,"2", Integer.toString(i))));
-                four_three.setText(Integer.toString(recorddeal.loadStats(this,"3", Integer.toString(i))));
-                four_four.setText(Integer.toString(recorddeal.loadStats(this,"4", Integer.toString(i))));
+                four_one.setText(Integer.toString(recorddeal.loadMultiStats(this,"1", Integer.toString(i))));
+                four_two.setText(Integer.toString(recorddeal.loadMultiStats(this,"2", Integer.toString(i))));
+                four_three.setText(Integer.toString(recorddeal.loadMultiStats(this,"3", Integer.toString(i))));
+                four_four.setText(Integer.toString(recorddeal.loadMultiStats(this,"4", Integer.toString(i))));
             }
         }
     }

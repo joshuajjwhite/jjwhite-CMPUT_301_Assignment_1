@@ -15,6 +15,18 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.os.Handler;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
@@ -29,6 +41,7 @@ public class ReactionTest extends AppCompatActivity {
     private int START;
     private int PLAYGAME;
     private int POSTCLICK;
+    private static final String FILENAME = "file.sav";
 
 
     @Override
@@ -39,6 +52,8 @@ public class ReactionTest extends AppCompatActivity {
         START = 1;
         PLAYGAME = 2;
         POSTCLICK = 3;
+
+
 
         single_player_button = (Button) findViewById(R.id.single_player_button);
 
@@ -78,7 +93,14 @@ public class ReactionTest extends AppCompatActivity {
 
                  else if(msg.what == POSTCLICK){
                      gamehandle.removeMessages(PLAYGAME);
-                     single_player_button.setText(datamanager.handleClick());
+                     String handle = datamanager.handleClick();
+                     if(!handle.equals("TOOEARLY!")){
+                         saveSingleRecords();
+                         single_player_button.setText(handle + " S ");
+                     }
+                     else{
+                        single_player_button.setText(handle);}
+
                      datamanager.changeState("WAIT");
                      msg = new Message();
                      msg.what = START;
@@ -87,8 +109,8 @@ public class ReactionTest extends AppCompatActivity {
                  }
              }
          };
+        loadFromFile();
     }
-
 
     @Override
     protected void onStart() {
@@ -151,6 +173,46 @@ public class ReactionTest extends AppCompatActivity {
 
 
    }
+
+    private void loadFromFile() {
+        try {
+            FileInputStream fis = openFileInput(FILENAME);
+            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+            Gson gson = new Gson();
+            //Following line based on gson
+            Type listType = new TypeToken<ArrayList<Double>>() {}.getType();
+            ArrayList<Double> click_records  = gson.fromJson(in,listType);
+            datamanager.getRecords().setClick_tracker(click_records);
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            datamanager.setRecordsAL(new ArrayList<Double>());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+    }
+
+    public void saveSingleRecords(){
+        try {
+            FileOutputStream fos = openFileOutput(FILENAME, 0);
+            OutputStreamWriter writer = new OutputStreamWriter(fos);
+            Gson gson = new Gson();
+            gson.toJson(datamanager.getRecords().getClick_tracker(), writer);
+            writer.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 
 
 }

@@ -87,7 +87,7 @@ public class PlayWithFriends extends AppCompatActivity {
     public void alertPlayer(String playernum){
         alert = new AlertDialog.Builder(PlayWithFriends.this);
         alert.setTitle("Buzzed In");
-        String temp = Integer.toString(multiplayer_records.loadStats(this, playernum, Integer.toString(getNumOfPlayers())));
+        String temp = Integer.toString(multiplayer_records.loadMultiStats(this, playernum, Integer.toString(getNumOfPlayers())));
         alert.setMessage("Player " + playernum + " Buzzed In First! " + "(" + temp + ")" );
         alert.setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
             @Override
