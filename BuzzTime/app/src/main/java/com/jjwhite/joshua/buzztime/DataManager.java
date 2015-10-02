@@ -14,7 +14,6 @@ public class DataManager {
 
     RecordDealer records;
     private GamePlay game;
-    private DataManager datamanager;
     private Context context;
     private static DataManager instance;
 
@@ -75,9 +74,6 @@ public class DataManager {
         return records;
     }
 
-    public void setRecords(RecordDealer records) {
-        this.records = records;
-    }
 
     public void setRecordsAL(ArrayList<Double> al){
         this.getRecords().setClick_tracker(al);

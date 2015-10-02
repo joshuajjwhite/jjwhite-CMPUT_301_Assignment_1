@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 public class PlayWithFriends extends AppCompatActivity {
 
-    RecordDealer multiplayer_records;
-    AlertDialog.Builder alert = null;
+    private RecordDealer multiplayer_records;
+    private AlertDialog.Builder alert = null;
     private long lastClickTime;
 
 

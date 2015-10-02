@@ -30,10 +30,6 @@ public class RecordDealer {
 
 
 
-
-
-
-
     private ArrayList<Double> click_tracker; // For single player stats
 
     public RecordDealer(ArrayList<Double> arraylist){

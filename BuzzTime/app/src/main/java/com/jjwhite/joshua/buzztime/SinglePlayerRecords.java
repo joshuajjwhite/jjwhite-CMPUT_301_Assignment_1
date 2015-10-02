@@ -98,7 +98,7 @@ public class SinglePlayerRecords extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void MultiplayerRecords(View view) {
+    public void multiplayerRecords(View view) {
         //Triggered when the user selects "Records" from the menu
         // Will trigger page that displays records
         Intent intent = new Intent(this, MultiplayerRecords.class);

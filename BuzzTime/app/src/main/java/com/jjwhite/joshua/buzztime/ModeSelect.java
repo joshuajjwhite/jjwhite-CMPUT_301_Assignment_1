@@ -49,7 +49,7 @@ public class ModeSelect extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void PlayWithFriends(View view) {
+    public void playWithFriends(View view) {
         // Triggered when the user selects "Play with Friends" from the Mode Select
         // It will trigger the mode for 2-4 player play
         Intent intent = new Intent(this, PlayerPicker.class);
