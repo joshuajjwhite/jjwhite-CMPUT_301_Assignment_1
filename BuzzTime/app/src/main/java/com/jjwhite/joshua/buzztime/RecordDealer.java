@@ -151,7 +151,29 @@ public class RecordDealer {
         this.setClick_tracker(new ArrayList<Double>());
     }
 
+    public Double maxi(int index) {
+        if (this.getClick_tracker().size() == 0) {
+            return 0d;
+        } else if (this.getClick_tracker().size() < index) {
+            return Collections.max(this.click_tracker);
+        } else {
+            List<Double> temp = this.click_tracker.subList(0, index);
+            return Collections.max(temp);
+        }
+    }
 
+
+    public Double mini(int index) {
+        if (this.getClick_tracker().size() == 0) {
+            return 0d;
+        } else if (this.getClick_tracker().size() < index) {
+            return Collections.min(this.click_tracker);
+        } else {
+            List<Double> temp = this.click_tracker.subList(0, index);
+            return Collections.min(temp);
+        }
+
+    }
 
 
 }

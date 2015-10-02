@@ -34,6 +34,13 @@ public class SinglePlayerRecords extends AppCompatActivity {
     private TextView three_one;
     private  TextView three_two;
     private TextView three_three;
+
+    private TextView four_one;
+    private TextView four_two;
+    private TextView four_three;
+    private TextView five_one;
+    private  TextView five_two;
+    private TextView five_three;
     private DecimalFormat df;
 
 
@@ -52,6 +59,13 @@ public class SinglePlayerRecords extends AppCompatActivity {
         three_one = (TextView) findViewById(R.id.single_3_2);
         three_two = (TextView) findViewById(R.id.single_3_3);
         three_three = (TextView) findViewById(R.id.single_3_4);
+
+        four_one = (TextView) findViewById(R.id.single_4_2);
+        four_two = (TextView) findViewById(R.id.single_4_3);
+        four_three = (TextView) findViewById(R.id.single_4_4);
+        five_one = (TextView) findViewById(R.id.single_5_2);
+        five_two = (TextView) findViewById(R.id.single_5_3);
+        five_three = (TextView) findViewById(R.id.single_5_4);
 
 
 
@@ -146,6 +160,16 @@ public class SinglePlayerRecords extends AppCompatActivity {
         three_one.setText(df.format(datamanager.getRecords().meadian10()));
         three_two.setText(df.format((datamanager.getRecords().meadian100())));
         three_three.setText(df.format((datamanager.getRecords().meadianAll())));
+
+        four_one.setText(df.format(datamanager.getRecords().mini(10)));
+        four_two.setText(df.format((datamanager.getRecords().mini(100))));
+        four_three.setText(df.format((datamanager.getRecords().mini(datamanager.getRecords().getClick_tracker().size()))));
+
+        five_one.setText(df.format(datamanager.getRecords().maxi(10)));
+        five_two.setText(df.format((datamanager.getRecords().maxi(100))));
+        five_three.setText(df.format((datamanager.getRecords().maxi(datamanager.getRecords().getClick_tracker().size()))));
+
+
     }
 
     public String generateEmail(){
@@ -160,6 +184,13 @@ public class SinglePlayerRecords extends AppCompatActivity {
         email = email + "Last 100 Clicks Median:  " + three_two.getText().toString() + '\n';
         email = email + "All Clicks Median:  " + three_three.getText().toString() + '\n' + '\n';
 
+        email = email + "Last 10 Clicks Min:  " + four_one.getText().toString() + '\n';
+        email = email + "Last 100 Clicks Min:  " + four_two.getText().toString() + '\n';
+        email = email + "All Clicks Min:  " + four_three.getText().toString() + '\n' + '\n';
+
+        email = email + "Last 10 Clicks Max:  " + five_one.getText().toString() + '\n';
+        email = email + "Last 100 Clicks Max:  " + five_two.getText().toString() + '\n';
+        email = email + "All Clicks Max:  " + five_three.getText().toString() + '\n' + '\n';
 
         email = email + "Multiplayer Records: " + '\n' + '\n';
 
