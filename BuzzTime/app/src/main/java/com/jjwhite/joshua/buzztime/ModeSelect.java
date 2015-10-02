@@ -7,13 +7,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ModeSelect extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mode_select);
+
+
     }
 
     @Override
@@ -58,5 +62,8 @@ public class ModeSelect extends AppCompatActivity {
         Intent intent = new Intent(this, SinglePlayerRecords.class);
         startActivity(intent);
     }
+
+
+
 
 }

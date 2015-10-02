@@ -2,6 +2,7 @@ package com.jjwhite.joshua.buzztime;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -13,7 +14,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,14 +29,21 @@ import com.google.gson.reflect.TypeToken;
 public class RecordDealer {
 
 
+
+
+
+
+
     private ArrayList<Double> click_tracker; // For single player stats
 
     public RecordDealer(ArrayList<Double> arraylist){
+
 
         this.click_tracker = arraylist;
     }
 
     public RecordDealer(){
+
         this.click_tracker = new ArrayList<Double>();
     }
 
@@ -78,6 +89,68 @@ public class RecordDealer {
 
         }
     }
+
+    public Double mean(int index){
+        Double temp = 0d;
+
+        if(this.getClick_tracker().size() == 0){
+            return temp;
+        }
+        else if(this.getClick_tracker().size() < index){
+            return meanAll();
+        }
+        else {
+            for (int k = 0; k < index; k++) {
+                temp += this.click_tracker.get(k);
+            }
+
+            return (temp / index);
+        }
+    }
+
+    public Double mean10(){
+        return mean(10);
+    }
+
+    public Double mean100(){
+        return mean(100);
+    }
+
+    public Double meanAll(){
+        return mean(this.click_tracker.size());
+    }
+
+    public Double meadian(int index){
+        if(this.getClick_tracker().size() == 0){
+            return 0d;
+        }
+
+        else if(this.getClick_tracker().size() < index){
+            return meadianAll();
+        }
+        else {
+            List<Double> temp = this.click_tracker.subList(0, index);
+            Collections.sort(temp);
+            return temp.get((index / 2) - 1);
+        }
+    }
+
+    public Double meadian10(){
+        return meadian(10);
+    }
+
+    public Double meadian100(){
+        return meadian(100);
+    }
+
+    public Double meadianAll(){
+        return meadian(this.click_tracker.size());
+    }
+
+    public void clearSingleRecords(){
+        this.setClick_tracker(new ArrayList<Double>());
+    }
+
 
 
 
