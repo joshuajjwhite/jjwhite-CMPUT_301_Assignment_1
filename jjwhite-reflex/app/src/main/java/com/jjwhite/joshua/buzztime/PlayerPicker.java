@@ -55,8 +55,7 @@ public class PlayerPicker extends AppCompatActivity {
     public void confirmPlayers(View view) {
         Intent intent = new Intent(this, PlayWithFriends.class);
         NumberPicker numPick = (NumberPicker) findViewById(R.id.player_picker);
-        int num_players = numPick.getValue();
-        intent.putExtra("com.jjwhite.joshua.NUM_PLAYERS", num_players);
+        intent.putExtra("com.jjwhite.joshua.NUM_PLAYERS", numPick.getValue());
                 startActivity(intent);
 
     }

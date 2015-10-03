@@ -106,6 +106,7 @@ public class SinglePlayerRecords extends AppCompatActivity {
 
     }
 
+    //load and save Gson methods are taken from lab material and edited
     private void loadFromFile() {
         try {
             FileInputStream fis = openFileInput(FILENAME);
@@ -209,6 +210,7 @@ public class SinglePlayerRecords extends AppCompatActivity {
         return email;
     }
 
+    //Referenced online article http://www.tutorialspoint.com/android/android_sending_email.htm
     public void sendEmail(View view){
 
         Intent emailintent = new Intent(Intent.ACTION_SEND);

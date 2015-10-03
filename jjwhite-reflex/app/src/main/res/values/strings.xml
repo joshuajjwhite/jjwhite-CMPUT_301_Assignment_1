@@ -6,7 +6,7 @@
     <string name="react_test_button">Test Your Reaction Time</string>
     <string name="party_button">Play with Friends</string>
     <string name="record_button">Records</string>
-    <string name="welcome">Welcome to Buzz Time!  Please select a menu item</string>
+    <string name="welcome">Welcome to Buzz Time!</string>
     <string name="title_activity_reaction_test">ReactionTest</string>
     <string name="title_activity_play_with_friends">PlayWithFriends</string>
     <string name="title_activity_single_player_records">Records</string>

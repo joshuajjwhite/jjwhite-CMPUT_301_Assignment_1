@@ -48,15 +48,16 @@ public class ReactionTest extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reaction_test);
+
+        //initiate resources for the handler
         msg = new Message();
         START = 1;
         PLAYGAME = 2;
         POSTCLICK = 3;
 
-
-
         single_player_button = (Button) findViewById(R.id.single_player_button);
 
+        //create DataManager (control)
         datamanager = DataManager.getInstance(this);
 
 
@@ -72,16 +73,20 @@ public class ReactionTest extends AppCompatActivity {
         });
 
 
-         gamehandle = new Handler(){
+        //Handles all events in the game progressiong from set up to replay
+        gamehandle = new Handler(){
 
              public void handleMessage(Message msg) {
                  if(msg.what == START) {
+                     //preps game with random delay
                      datamanager.changeState("START");
                      datamanager.gamePrep();
+                     //starts the random wait
                      gameStart();
 
                  }
                  else if(msg.what == PLAYGAME) {
+                     //readys the game for the user to start interacting
                      String readystate = datamanager.readyTest();
                      if(readystate.equals("CLICK!")){
                         single_player_button.setText(readystate);}
@@ -92,9 +97,11 @@ public class ReactionTest extends AppCompatActivity {
                  }
 
                  else if(msg.what == POSTCLICK){
+                     //calcs latency or....
                      gamehandle.removeMessages(PLAYGAME);
                      String handle = datamanager.handleClick();
-                     if(!handle.equals("TOOEARLY!")){
+                     //...gets mad if you were too early
+                     if(!handle.equals("TOO EARLY!")){
                          saveSingleRecords();
                          single_player_button.setText(handle + " S ");
                      }
@@ -104,6 +111,7 @@ public class ReactionTest extends AppCompatActivity {
                      datamanager.changeState("WAIT");
                      msg = new Message();
                      msg.what = START;
+                     //replay game
                      gamehandle.sendMessage(msg);
 
                  }
@@ -156,12 +164,13 @@ public class ReactionTest extends AppCompatActivity {
 
         alert.create();
         alert.show();
-
     }
 
     public void afterDismiss(){
-    msg.what = START;
-    gamehandle.sendMessage(msg);}
+        msg.what = START;
+        gamehandle.sendMessage(msg);
+    }
+
 
    public void gameStart() {
 
@@ -169,10 +178,9 @@ public class ReactionTest extends AppCompatActivity {
        msg.what = PLAYGAME;
        gamehandle.sendMessageDelayed(msg, datamanager.getRandomDelay());
 
-
-
-
    }
+
+    //load and save Gson methods are taken from lab material and edited
 
     private void loadFromFile() {
         try {

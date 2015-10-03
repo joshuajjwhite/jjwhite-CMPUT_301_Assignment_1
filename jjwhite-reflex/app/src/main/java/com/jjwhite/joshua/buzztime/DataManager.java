@@ -23,13 +23,14 @@ public class DataManager {
         game = new GamePlay();
     }
 
-
+    //used to create the Datamanager object
     public static DataManager getInstance(Context context) {
         if (instance == null) {
             instance = new DataManager(context.getApplicationContext());
         }
         return instance;
     }
+
 
     public void changeState(String state){
         game.setGamestate(state);
@@ -55,12 +56,13 @@ public class DataManager {
             return "CLICK!";
         }
 
+        //Should never show up
         else{return "STARTOVER";}
     }
 
     public String handleClick(){
         if( game.tooEarly() ){
-            return "TOOEARLY!";
+            return "TOO EARLY!";
         }
 
         else {
@@ -74,7 +76,7 @@ public class DataManager {
         return records;
     }
 
-
+    //sets the latency record ArrayList to the give ArrayList
     public void setRecordsAL(ArrayList<Double> al){
         this.getRecords().setClick_tracker(al);
     }

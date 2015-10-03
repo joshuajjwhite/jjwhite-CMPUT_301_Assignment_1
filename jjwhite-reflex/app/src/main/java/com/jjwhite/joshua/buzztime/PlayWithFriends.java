@@ -25,11 +25,10 @@ public class PlayWithFriends extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        int numOfPlayers = getNumOfPlayers();
-
         setContentView(R.layout.activity_play_with_friends);
-        formatPlayerButtons(numOfPlayers);
+        formatPlayerButtons(getNumOfPlayers());
 
+        //used for eliminating button bounce
         lastClickTime = 0;
     }
 
@@ -55,7 +54,7 @@ public class PlayWithFriends extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    //hides buttons we don;t want
     public void formatPlayerButtons(int numOfPlayers){
         Button button3 = (Button)findViewById(R.id.button_player_3);
         Button button4 = (Button)findViewById(R.id.button_player_4);
@@ -69,6 +68,8 @@ public class PlayWithFriends extends AppCompatActivity {
         }
     }
 
+    //Button bounce mitigation build with the help of
+    // http://stackoverflow.com/questions/5608720/android-preventing-double-click-on-a-button
     public void buzzIn(View view) throws InterruptedException {
 
             if(!(SystemClock.elapsedRealtime() - lastClickTime < 1500)){

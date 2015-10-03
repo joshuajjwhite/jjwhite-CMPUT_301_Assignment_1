@@ -50,7 +50,7 @@ public class GamePlay {
     }
 
     public void nextRand(){
-        setRandomdelay((this.rand.nextDouble() * 2510.0d) - 10.0d);
+        setRandomdelay((this.rand.nextDouble() * 1950.0d) + 10.0d);
     }
 
     public boolean tooEarly(){
