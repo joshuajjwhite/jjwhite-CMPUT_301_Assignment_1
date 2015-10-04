@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jjwhite.joshua.buzztime.PlayWithFriends">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Player 1"
+        android:id="@+id/button_player_1"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:textSize="7mm"
+        android:background= "#ffb2b2"
+        android:layout_margin="1mm"
+        android:onClick="buzzIn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Player 2"
+        android:id="@+id/button_player_2"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:textSize="7mm"
+        android:background= "#009a00"
+        android:layout_margin="1mm"
+        android:onClick="buzzIn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Player 3"
+        android:id="@+id/button_player_3"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:textSize="7mm"
+        android:background= "#9999ff"
+        android:layout_margin="1mm"
+        android:onClick="buzzIn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Player 4"
+        android:id="@+id/button_player_4"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:textSize="7mm"
+        android:background= "#ffffff00"
+        android:layout_margin="1mm"
+        android:onClick="buzzIn"/>
+</LinearLayout>

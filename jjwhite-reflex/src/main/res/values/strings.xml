@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Buzz Time</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="react_test_button">Test Your Reaction Time</string>
+    <string name="party_button">Play with Friends</string>
+    <string name="record_button">Records</string>
+    <string name="welcome">Welcome to Buzz Time!</string>
+    <string name="title_activity_reaction_test">ReactionTest</string>
+    <string name="title_activity_play_with_friends">PlayWithFriends</string>
+    <string name="title_activity_single_player_records">Records</string>
+    <string name="title_activity_player_picker">PlayerPicker</string>
+    <string name="players_amount">How many Players are playing?</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="title_activity_multiplayer_records">MultiuplayerRecords</string>
+</resources>

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Buzztime.iml" filepath="$PROJECT_DIR$/Buzztime.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jjwhite-reflex.iml" filepath="$PROJECT_DIR$/jjwhite-reflex.iml" />
     </modules>
   </component>
 </project>
